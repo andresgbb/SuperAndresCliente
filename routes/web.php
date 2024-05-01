@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +18,16 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('login');
 });
+Route::get('/home',function(){return view('home');});
+Route::get('/productos',function(){return view('productos');});
 
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/products', [ApiController::class, 'index']);
-Route::post('/products', [ApiController::class, 'store']);
-Route::put('/products/{id}', [ApiController::class, 'update']);
-Route::delete('/products/{id}', [ApiController::class, 'destroy']);
+
+Route::get('/productos', [ProductController::class, 'index']);
+
+// Route::get('/products', [ApiController::class, 'index']);
+// Route::post('/products', [ApiController::class, 'store']);
+// Route::put('/products/{id}', [ApiController::class, 'update']);
+// Route::delete('/products/{id}', [ApiController::class, 'destroy']);
