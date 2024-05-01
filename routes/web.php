@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/products', [ApiController::class, 'index']);
+Route::post('/products', [ApiController::class, 'store']);
+Route::put('/products/{id}', [ApiController::class, 'update']);
+Route::delete('/products/{id}', [ApiController::class, 'destroy']);
