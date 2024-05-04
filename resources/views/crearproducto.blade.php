@@ -29,21 +29,24 @@
                     @endauth
                 </div>
             @endif
-           <div class="nav-container">
-                <div class="title">
-                    <h1>SuperAndres</h1>
+            <h1>CREAR</h1>
+            <form action="{{ route('products.store') }}" method="POST">
+                @csrf
+                <div>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name">
                 </div>
-                <div class="navegacion">
-                    <div class="enlaces">
-                        <a href="/productos">Productos</a>
-                        <a href=""> Proveedores</a>
-                        <a href="">informacion</a>
-                    </div>
-                    <div class="logout">
-                        <button>logout</button>
-                    </div>
+                <div>
+                    <label for="description">Descripción:</label>
+                    <textarea id="description" name="description"></textarea>
                 </div>
-           </div>
+                <div>
+                    <label for="price">Precio:</label>
+                    <input type="number" id="price" name="price">
+                </div>
+                <button type="submit">Guardar</button>
+            </form>
+
             </div>
         </div>
     </body>

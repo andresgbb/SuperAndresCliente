@@ -50,7 +50,7 @@
                     <h2>Lista de Productos</h2>
                 </div>
                 <div class="crear">
-                    <a href="">Crear</a>
+                    <a href="/crearproducto">Crear</a>
                 </div>
             </div>
             <table class="table">
@@ -71,8 +71,14 @@
                         <td>{{ $product['description'] }}</td>
                         <td>{{ $product['price'] }}</td>
                         <td>
-                            <button class="btn-modificar" data-id="{{ $product['id'] }}">Modificar</button>
-                    <button class="btn-eliminar" data-id="{{ $product['id'] }}">Eliminar</button>
+                            <form  action="">
+                                <button class="btn-modificar" data-id="{{ $product['id'] }}">Modificar</button>
+                            </form>
+                            <form id="deleteForm" action="{{ route('productos.destroy', $product['id']) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

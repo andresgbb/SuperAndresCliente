@@ -20,12 +20,16 @@ Route::get('/', function () {
 });
 Route::get('/home',function(){return view('home');});
 Route::get('/productos',function(){return view('productos');});
+Route::get('/crearproducto',function(){return view('crearproducto');});
 
 
 Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::get('/productos', [ProductController::class, 'index']);
+Route::post('/productos', [ProductController::class, 'store'])->name('products.store');
+Route::delete('/productos/{id}', [ProductController::class, 'destroy'])->name('productos.destroy');
+
 
 // Route::get('/products', [ApiController::class, 'index']);
 // Route::post('/products', [ApiController::class, 'store']);

@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         try {
             // Obtener el token de la sesión del usuario
             $token = Session::get('auth_token');
@@ -31,4 +30,60 @@ class ProductController extends Controller
             return response()->json(['message' => 'Error al realizar la solicitud: ' . $e->getMessage()], 500);
         }
     }
+    public function store(Request $request){
+    try {
+        // Obtener el token de la sesión del usuario
+        $token = Session::get('auth_token');
+
+        // Verificar si el campo 'name', 'price' y 'description' están presentes en los datos de la solicitud
+        $requestData = $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+        ]);
+
+        // Realizar la solicitud POST a la API de productos incluyendo el token en los encabezados y los datos del nuevo producto
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->post('http://localhost:8000/api/products', $requestData);
+
+        if ($response->successful()) {
+            // Devolver una respuesta adecuada
+            return response()->json('Producto creado exitosamente.', 201);
+        } else {
+            // Devolver el mensaje de error de la respuesta de la API
+            return response()->json($response->json(), $response->status());
+        }
+    } catch (\Exception $e) {
+        // Manejar errores de la solicitud
+        return response()->json(['message' => 'Error al realizar la solicitud: ' . $e->getMessage()], 500);
+    }
+}
+public function destroy($id)
+{
+    try {
+        // Obtener el token de la sesión del usuario
+        $token = Session::get('auth_token');
+
+        // Realizar la solicitud DELETE a la API para eliminar el producto incluyendo el token en los encabezados
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->delete("http://localhost:8000/api/products/$id");
+
+        if ($response->successful()) {
+            // Devolver una respuesta adecuada
+            return redirect('/productos');
+        } else {
+            // Manejar errores de la API
+            return response()->json(['message' => 'Error al eliminar el producto API'], $response->status());
+        }
+    } catch (\Exception $e) {
+        // Manejar errores de la solicitud
+        return response()->json(['message' => 'Error al eliminar el producto: ' . $e->getMessage()], 500);
+    }
+}
+
+
+
+
 }
