@@ -34,15 +34,15 @@
                 @csrf
                 <div>
                     <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" name="name" required>
                 </div>
                 <div>
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email"></input>
+                    <input type="email" id="email" name="email" required></input>
                 </div>
                 <div>
                     <label for="phone">Teléfono:</label>
-                    <input type="phone" id="phone" name="phone">
+                    <input type="phone" id="phone" name="phone" required>
                 </div>
                 <button type="submit">Guardar</button>
             </form>

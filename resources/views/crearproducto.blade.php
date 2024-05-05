@@ -34,15 +34,15 @@
                 @csrf
                 <div>
                     <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" name="name" required>
                 </div>
                 <div>
                     <label for="description">Descripción:</label>
-                    <textarea id="description" name="description"></textarea>
+                    <textarea id="description" name="description" required></textarea>
                 </div>
                 <div>
                     <label for="price">Precio:</label>
-                    <input type="number" id="price" name="price">
+                    <input type="number" id="price" name="price" required>
                 </div>
                 <button type="submit">Guardar</button>
             </form>

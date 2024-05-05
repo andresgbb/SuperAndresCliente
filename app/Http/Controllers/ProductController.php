@@ -35,8 +35,7 @@ class ProductController extends Controller
     try {
         // Obtener el token de la sesión del usuario
         $token = Session::get('auth_token');
-
-        // Verificar si el campo 'name', 'price' y 'description' están presentes en los datos de la solicitud
+        //Verificar
         $requestData = $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric',
@@ -49,8 +48,7 @@ class ProductController extends Controller
         ])->post('http://localhost:8000/api/products', $requestData);
 
         if ($response->successful()) {
-            // Devolver una respuesta adecuada
-            return response()->json('Producto creado exitosamente.', 201);
+            return redirect('/productos');
         } else {
             // Devolver el mensaje de error de la respuesta de la API
             return response()->json($response->json(), $response->status());
@@ -71,7 +69,6 @@ public function destroy($id){
         ])->delete("http://localhost:8000/api/products/$id");
 
         if ($response->successful()) {
-            // Devolver una respuesta adecuada
             return redirect('/productos');
         } else {
             // Manejar errores de la API

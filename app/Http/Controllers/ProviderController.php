@@ -48,8 +48,7 @@ class ProviderController extends Controller
             ])->post('http://localhost:8000/api/providers', $requestData);
 
             if ($response->successful()) {
-                // Devolver una respuesta adecuada
-                return response()->json('Proveedor creado exitosamente.', 201);
+                return redirect('/proveedores');
             } else {
                 // Devolver el mensaje de error de la respuesta de la API
                 return response()->json($response->json(), $response->status());
