@@ -59,8 +59,7 @@ class ProductController extends Controller
         return response()->json(['message' => 'Error al realizar la solicitud: ' . $e->getMessage()], 500);
     }
 }
-public function destroy($id)
-{
+public function destroy($id){
     try {
         // Obtener el token de la sesión del usuario
         $token = Session::get('auth_token');
@@ -82,8 +81,31 @@ public function destroy($id)
         return response()->json(['message' => 'Error al eliminar el producto: ' . $e->getMessage()], 500);
     }
 }
+public function update(Request $request, $id)
+{
+    try {
+        // Obtener el token de la sesión del usuario
+        $token = Session::get('auth_token');
 
+        // Obtener los datos del formulario
+        $requestData = $request->all();
 
+        // Realizar la solicitud PUT a la API para actualizar el producto incluyendo el token en los encabezados
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->put("http://localhost:8000/api/products/$id", $requestData);
 
+        if ($response->successful()) {
+            // Devolver una respuesta adecuada
+            return redirect('/productos')->with('success', 'El producto ha sido actualizado correctamente.');
+        } else {
+            // Manejar errores de la API
+            return response()->json(['message' => 'Error al actualizar el producto API'], $response->status());
+        }
+    } catch (\Exception $e) {
+        // Manejar errores de la solicitud
+        return response()->json(['message' => 'Error al actualizar el producto: ' . $e->getMessage()], 500);
+    }
+}
 
 }

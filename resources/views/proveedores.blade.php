@@ -35,7 +35,7 @@
                 </div>
                 <div class="navegacion">
                     <div class="enlaces">
-                        <a href="/productos">Home</a>
+                        <a href="/productos">Productos</a>
                         <a href="/proveedores"> Proveedores</a>
                         <a href="">informacion</a>
                     </div>
@@ -47,10 +47,10 @@
            <div class="container mx-auto">
             <div class="cont">
                 <div class="lista">
-                    <h2>Lista de Productos</h2>
+                    <h2>Lista de Proveedores</h2>
                 </div>
                 <div class="crear">
-                    <a href="/crearproducto">Crear</a>
+                    <a href="/crearproveedor">Crear</a>
                 </div>
             </div>
             <table class="table">
@@ -58,23 +58,23 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($products['data'] as $product)
+                    @foreach($providers['data'] as $provider)
                     <tr>
-                        <td>{{ $product['id'] }}</td>
-                        <td>{{ $product['name'] }}</td>
-                        <td>{{ $product['description'] }}</td>
-                        <td>{{ $product['price'] }}</td>
+                        <td>{{ $provider['id'] }}</td>
+                        <td>{{ $provider['name'] }}</td>
+                        <td>{{ $provider['email'] }}</td>
+                        <td>{{ $provider['phone'] }}</td>
                         <td>
                             <form  action="">
-                                <button class="btn-modificar" data-id="{{ $product['id'] }}">Modificar</button>
+                                <button class="btn-modificar" data-id="{{ $provider['id'] }}">Modificar</button>
                             </form>
-                            <form id="deleteForm" action="{{ route('productos.destroy', $product['id']) }}" method="POST">
+                            <form id="deleteForm" action="{{ route('provider.destroy', $provider['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-eliminar">Eliminar</button>

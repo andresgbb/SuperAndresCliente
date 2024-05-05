@@ -29,20 +29,20 @@
                     @endauth
                 </div>
             @endif
-            <h1>Crear Producto</h1>
-            <form action="{{ route('products.store') }}" method="POST">
+            <h1>Crear Proveedor</h1>
+            <form action="{{ route('provider.store') }}" method="POST">
                 @csrf
                 <div>
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="name">
                 </div>
                 <div>
-                    <label for="description">Descripción:</label>
-                    <textarea id="description" name="description"></textarea>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"></input>
                 </div>
                 <div>
-                    <label for="price">Precio:</label>
-                    <input type="number" id="price" name="price">
+                    <label for="phone">Teléfono:</label>
+                    <input type="phone" id="phone" name="phone">
                 </div>
                 <button type="submit">Guardar</button>
             </form>
