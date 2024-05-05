@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 
+
 class ProductController extends Controller
 {
     public function index(){
@@ -81,8 +82,7 @@ public function destroy($id){
         return response()->json(['message' => 'Error al eliminar el producto: ' . $e->getMessage()], 500);
     }
 }
-public function update(Request $request, $id)
-{
+public function update(Request $request, $id){
     try {
         // Obtener el token de la sesión del usuario
         $token = Session::get('auth_token');
@@ -105,6 +105,30 @@ public function update(Request $request, $id)
     } catch (\Exception $e) {
         // Manejar errores de la solicitud
         return response()->json(['message' => 'Error al actualizar el producto: ' . $e->getMessage()], 500);
+    }
+}
+public function edit($id)
+{
+    try {
+        // Obtener el token de la sesión del usuario
+        $token = Session::get('auth_token');
+
+        // Obtener el producto por su ID desde la API
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->get("http://localhost:8000/api/products/$id");
+
+        if ($response->successful()) {
+            // Decodificar los datos JSON de la respuesta
+            $product = $response->json();
+            return view('editar_producto', compact('product'));
+        } else {
+            // Manejar errores de la API
+            return redirect()->route('productos.index')->with('error', 'Error al cargar el producto para editar.');
+        }
+    } catch (\Exception $e) {
+        // Manejar errores
+        return redirect()->route('productos.index')->with('error', 'Error al cargar el producto para editar: ' . $e->getMessage());
     }
 }
 

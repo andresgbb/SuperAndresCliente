@@ -71,9 +71,7 @@
                         <td>{{ $product['description'] }}</td>
                         <td>{{ $product['price'] }}</td>
                         <td>
-                            <form  action="">
-                                <button class="btn-modificar" data-id="{{ $product['id'] }}">Modificar</button>
-                            </form>
+                            <a href="{{ route('productos.edit', $product['id']) }}" class="btn-modificar">Modificar</a>
                             <form id="deleteForm" action="{{ route('productos.destroy', $product['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

@@ -25,12 +25,17 @@ Route::get('/crearproducto',function(){return view('crearproducto');});
 Route::get('/proveedores',function(){return view('proveedores');});
 Route::get('/crearproveedor',function(){return view('crearproveedor');});
 
+
+
 Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::get('/productos', [ProductController::class, 'index']);
 Route::post('/productos', [ProductController::class, 'store'])->name('products.store');
 Route::delete('/productos/{id}', [ProductController::class, 'destroy'])->name('productos.destroy');
+Route::get('/productos/{id}/editar', [ProductController::class, 'edit'])->name('productos.edit');
+Route::put('/productos/{id}', [ProductController::class, 'update'])->name('productos.update');
+
 
 Route::get('/proveedores', [ProviderController::class, 'index']);
 Route::post('/proveedores', [ProviderController::class, 'store'])->name('provider.store');
