@@ -71,12 +71,15 @@
                         <td>{{ $provider['email'] }}</td>
                         <td>{{ $provider['phone'] }}</td>
                         <td>
-                            <a href="{{ route('providers.edit', $provider['id']) }}" class="btn-modificar">Modificar</a>
-                            <form id="deleteForm" action="{{ route('provider.destroy', $provider['id']) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn-eliminar">Eliminar</button>
-                            </form>
+                            <div class="acciones-container">
+                                <a href="{{ route('providers.edit', $provider['id']) }}" class="btn-modificar">Modificar</a>
+                                <form id="deleteForm" action="{{ route('provider.destroy', $provider['id']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-eliminar">Eliminar</button>
+                                </form>
+                            </div>
+
                         </td>
                     </tr>
                     @endforeach

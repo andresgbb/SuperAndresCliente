@@ -65,30 +65,219 @@
     background-color: #f2f2f2;
 }
 
-.btn-modificar {
+.acciones-container{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-modificar,
+.btn-eliminar {
+    display: inline-block; /* Mostrar los botones en línea */
     padding: 5px 10px;
     margin-right: 5px;
     border: none;
+    cursor: pointer;
+}
+.btn-modificar {
     background-color: #007bff; /* Azul */
     color: #fff;
-    cursor: pointer;
+    text-decoration: none;
 }
-
 .btn-eliminar {
-    padding: 5px 10px;
-    margin-right: 5px;
-    border: none;
     background-color: #dc3545; /* Rojo */
     color: #fff;
-    cursor: pointer;
 }
-
 .btn-modificar:hover {
     background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
 }
-
 .btn-eliminar:hover {
     background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
 }
 
+/* PAGINA CREAR PRODUCTO */
+/* Estilo para el formulario de creación de productos */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 4%;
+}
 
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.form-container button[type="submit"]:hover {
+    background-color: #0056b3; /
+}
+/* PAGINA CREAR PROVEEEDOR */
+.provider-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 4%;
+}
+
+.provider-form-container h1 {
+    text-align: center; /* Centrar el título */
+    margin-bottom: 20px; /* Espaciado inferior del título */
+}
+
+.provider-form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.provider-form-container input[type="text"],
+.provider-form-container input[type="email"],
+.provider-form-container input[type="phone"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.provider-form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.provider-form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Editar PRODUCtO */
+
+/* Estilo para el formulario de edición de productos */
+.product-edit-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-edit-form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-edit-form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-edit-form-container input[type="text"],
+.product-edit-form-container input[type="number"],
+.product-edit-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.product-edit-form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-edit-form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* EDITAR PROVEEDOR */
+
+
+.provider-edit-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 4%;
+}
+
+.provider-edit-form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.provider-edit-form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.provider-edit-form-container input[type="text"],
+.provider-edit-form-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.provider-edit-form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.provider-edit-form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}

@@ -71,12 +71,15 @@
                         <td>{{ $product['description'] }}</td>
                         <td>{{ $product['price'] }}</td>
                         <td>
-                            <a href="{{ route('productos.edit', $product['id']) }}" class="btn-modificar">Modificar</a>
-                            <form id="deleteForm" action="{{ route('productos.destroy', $product['id']) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn-eliminar">Eliminar</button>
-                            </form>
+                            <div class="acciones-container">
+                                <a href="{{ route('productos.edit', $product['id']) }}" class="btn-modificar">Modificar</a>
+                                <form id="deleteForm" action="{{ route('productos.destroy', $product['id']) }}" method="POST">
+                                    @csrf
+                                     @method('DELETE')
+                                     <button type="submit" class="btn-eliminar">Eliminar</button>
+                                 </form>
+                            </div>
+
                         </td>
                     </tr>
                     @endforeach
