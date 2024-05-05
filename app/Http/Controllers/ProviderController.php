@@ -81,4 +81,41 @@ class ProviderController extends Controller
         return response()->json(['message' => 'Error al eliminar el proveedor: ' . $e->getMessage()], 500);
     }
 }
+public function edit($id)
+    {
+        try {
+            $token = Session::get('auth_token');
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+            ])->get("http://localhost:8000/api/providers/$id");
+
+            if ($response->successful()) {
+                $provider = $response->json();
+                return view('editar_proveedor', compact('provider'));
+            } else {
+                return redirect()->route('providers.index')->with('error', 'Error al cargar el proveedor para editar');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('providers.index')->with('error', 'Error al cargar el proveedor para editar: ' . $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $token = Session::get('auth_token');
+            $requestData = $request->all();
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+            ])->put("http://localhost:8000/api/providers/$id", $requestData);
+
+            if ($response->successful()) {
+                return redirect('/proveedores')->with('success', 'El proveedor ha sido actualizado correctamente.');
+            } else {
+                return redirect()->back()->with('error', 'Error al actualizar el proveedor');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error al actualizar el proveedor: ' . $e->getMessage());
+        }
+    }
 }

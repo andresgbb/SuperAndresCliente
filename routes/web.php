@@ -40,4 +40,5 @@ Route::put('/productos/{id}', [ProductController::class, 'update'])->name('produ
 Route::get('/proveedores', [ProviderController::class, 'index']);
 Route::post('/proveedores', [ProviderController::class, 'store'])->name('provider.store');
 Route::delete('/proveedores/{id}', [ProviderController::class, 'destroy'])->name('provider.destroy');
-
+Route::get('/proveedores/{id}/edit', [ProviderController::class, 'edit'])->name('providers.edit');
+Route::put('/providers/{id}', [ProviderController::class, 'update'])->name('providers.update');

@@ -71,9 +71,7 @@
                         <td>{{ $provider['email'] }}</td>
                         <td>{{ $provider['phone'] }}</td>
                         <td>
-                            <form  action="">
-                                <button class="btn-modificar" data-id="{{ $provider['id'] }}">Modificar</button>
-                            </form>
+                            <a href="{{ route('providers.edit', $provider['id']) }}" class="btn-modificar">Modificar</a>
                             <form id="deleteForm" action="{{ route('provider.destroy', $provider['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
