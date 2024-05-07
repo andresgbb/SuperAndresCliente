@@ -5,6 +5,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,16 +20,26 @@ use App\Http\Controllers\ProviderController;
 Route::get('/', function () {
     return view('login');
 });
-Route::get('/home',function(){return view('home');});
-Route::get('/productos',function(){return view('productos');});
-Route::get('/crearproducto',function(){return view('crearproducto');});
-Route::get('/proveedores',function(){return view('proveedores');});
-Route::get('/crearproveedor',function(){return view('crearproveedor');});
 
 
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/login',function(){return view('login');});
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/register',function(){return view('register');});
 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/home',function(){return view('home');});
+//     Route::get('/productos',function(){return view('productos');});
+//     Route::get('/crearproducto',function(){return view('crearproducto');});
+//     Route::get('/proveedores',function(){return view('proveedores');});
+//     Route::get('/crearproveedor',function(){return view('crearproveedor');});
+// });
+    Route::get('/home',function(){return view('home');});
+    Route::get('/productos',function(){return view('productos');});
+    Route::get('/crearproducto',function(){return view('crearproducto');});
+    Route::get('/proveedores',function(){return view('proveedores');});
+    Route::get('/crearproveedor',function(){return view('crearproveedor');});
 
 Route::get('/productos', [ProductController::class, 'index']);
 Route::post('/productos', [ProductController::class, 'store'])->name('products.store');

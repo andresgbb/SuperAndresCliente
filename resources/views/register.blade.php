@@ -30,13 +30,14 @@
                     @endauth
                 </div>
             @endif
-            <form action="/login" method="POST">
-                @csrf
-                <input type="email" name="email" placeholder="Correo electrónico">
-                <input type="password" name="password" placeholder="Contraseña">
-                <button type="submit">Iniciar sesión</button>
-                <a href="/register">crear cuenta</a>
-            </form>
+            <h2>Registro</h2>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <input type="text" name="name" placeholder="Nombre" required autofocus>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
 
 
             </div>
