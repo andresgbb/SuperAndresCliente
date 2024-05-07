@@ -27,9 +27,12 @@
                         <a href="/proveedores"> Proveedores</a>
                         <a href="">informacion</a>
                     </div>
-                    <div class="logout">
-                        <button>logout</button>
-                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <div class="logout">
+                            <button type="submit">Logout</button>
+                        </div>
+                    </form>
                 </div>
            </div>
            <div class="container mx-auto">

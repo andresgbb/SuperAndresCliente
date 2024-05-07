@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         // Valida las credenciales del usuario
         $request->validate([
             'email' => 'required|email',
@@ -25,21 +24,22 @@ class AuthController extends Controller
 
             // Obtiene la respuesta de la API
             $data = $response->json();
-
-            // Verifica si la solicitud fue exitosa
             if ($response->successful()) {
-                // Guarda el token en la sesión del usuario
                 Session::put('auth_token', $data['token']);
-                // Redirecciona al usuario a la página de inicio
                 return redirect('/home');
             }
-
-            // Devuelve la respuesta al cliente
             return response()->json($data, $response->status());
         } catch (\Exception $e) {
             // Maneja errores
             return response()->json(['message' => 'Error al realizar la solicitud: ' . $e->getMessage()], 500);
         }
+    }
+    public function logout(){
+        // Elimina la sesión del usuario
+        Session::forget('auth_token');
+
+        // Redirige al usuario a la página de inicio de sesión
+        return redirect('/login');
     }
 }
 
