@@ -9,6 +9,13 @@ body {
     height: 100vh;
     background-color: #f3f4f6; /* Color de fondo */
 }
+.centrar{
+    display: flex;
+    justify-content: center;
+}
+.centrar a{
+    text-decoration: none;
+}
 
 .container {
     max-width: 400px;
@@ -30,10 +37,16 @@ body {
 /* Estilos específicos para los formularios de registro e inicio de sesión */
 .register-form input,
 .login-form input,
-.register-form button,
-.login-form button,
 .register-form a {
     width: calc(100% - 24px); /* Resta el doble del padding (12px a cada lado) */
+    margin: 0 auto 15px auto; /* Margen superior e inferior de 15px y centrado horizontal */
+    padding: 12px; /* Padding de 12px en todas las direcciones */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 6px;
+}
+.register-form button,
+.login-form button{
+    width: 100%;
     margin: 0 auto 15px auto; /* Margen superior e inferior de 15px y centrado horizontal */
     padding: 12px; /* Padding de 12px en todas las direcciones */
     border: 1px solid #ccc; /* Borde del input */

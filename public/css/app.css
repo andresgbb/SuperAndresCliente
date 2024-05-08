@@ -1,6 +1,11 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+.centrar{
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+}
 .title{
     display: flex;
     justify-content: center;

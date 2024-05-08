@@ -23,9 +23,8 @@
                 </div>
                 <div class="navegacion">
                     <div class="enlaces">
-                        <a href="/productos">Home</a>
+                        <a href="/home">Home</a>
                         <a href="/proveedores"> Proveedores</a>
-                        <a href="">informacion</a>
                     </div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf

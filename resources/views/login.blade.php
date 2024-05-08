@@ -18,7 +18,9 @@
                     <input type="email" name="email" placeholder="Correo electrónico">
                     <input type="password" name="password" placeholder="Contraseña">
                 <button type="submit">Iniciar Sesión</button>
-                <a href="{{ route('register') }}">Crear cuenta</a>
+                <div class="centrar">
+                    <a href="{{ route('register') }}">Crear cuenta</a>
+                </div>
             </form>
         </div>
     </div>

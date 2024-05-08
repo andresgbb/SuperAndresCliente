@@ -28,7 +28,7 @@ class AuthController extends Controller
                 Session::put('auth_token', $data['token']);
                 return redirect('/home');
             }
-            return response()->json($data, $response->status());
+            return redirect('/login');
         } catch (\Exception $e) {
             // Maneja errores
             return response()->json(['message' => 'Error al realizar la solicitud: ' . $e->getMessage()], 500);
