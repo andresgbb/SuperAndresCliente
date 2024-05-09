@@ -17,7 +17,7 @@ class ProductController extends Controller
             // Realizar la solicitud GET a la API de productos incluyendo el token en los encabezados
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->get(env('API_BASE_URL'));
+            ])->get(env('API_BASE_URL').'/products');
 
             if ($response->successful()) {
                 // Decodificar los datos JSON de la respuesta

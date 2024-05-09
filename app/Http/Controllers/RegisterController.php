@@ -19,7 +19,7 @@ class RegisterController extends Controller
 
     try {
         // Realiza una solicitud POST a la ruta de registro de tu API
-        $response = Http::post(env('API_BASE_URL'), [
+        $response = Http::post(env('API_BASE_URL').'/register', [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
