@@ -45,7 +45,7 @@ class ProductController extends Controller
         // Realizar la solicitud POST a la API de productos incluyendo el token en los encabezados y los datos del nuevo producto
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->post(env('API_BASE_URL'), $requestData);
+        ])->post(env('API_BASE_URL') . '/products', $requestData);
 
         if ($response->successful()) {
             return redirect('/productos');
@@ -66,7 +66,7 @@ public function destroy($id){
         // Realizar la solicitud DELETE a la API para eliminar el producto incluyendo el token en los encabezados
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->delete("http://localhost:8000/api/products/$id");
+        ])->delete(env('API_BASE_URL'). '/' . $id);
 
         if ($response->successful()) {
             return redirect('/productos');
@@ -90,7 +90,7 @@ public function update(Request $request, $id){
         // Realizar la solicitud PUT a la API para actualizar el producto incluyendo el token en los encabezados
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->put("http://localhost:8000/api/products/$id", $requestData);
+        ])->put(env('API_BASE_URL'). '/'.$id, $requestData);
 
         if ($response->successful()) {
             // Devolver una respuesta adecuada
@@ -113,7 +113,7 @@ public function edit($id)
         // Obtener el producto por su ID desde la API
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->get("http://localhost:8000/api/products/$id");
+        ])->get(env('API_BASE_URL').'/' . $id);
 
         if ($response->successful()) {
             // Decodificar los datos JSON de la respuesta

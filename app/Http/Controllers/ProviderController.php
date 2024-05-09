@@ -16,7 +16,7 @@ class ProviderController extends Controller
             // Realizar la solicitud GET a la API de productos incluyendo el token en los encabezados
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->get(env('API_BASE_URL'));
+            ])->get(env('API_BASE_URL'). '/providers');
 
             if ($response->successful()) {
                 // Decodificar los datos JSON de la respuesta
@@ -45,7 +45,7 @@ class ProviderController extends Controller
             // Realizar la solicitud POST a la API de productos incluyendo el token en los encabezados y los datos del nuevo producto
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->post(env('API_BASE_URL'), $requestData);
+            ])->post(env('API_BASE_URL'). '/providers', $requestData);
 
             if ($response->successful()) {
                 return redirect('/proveedores');
@@ -66,7 +66,7 @@ class ProviderController extends Controller
         // Realizar la solicitud DELETE a la API para eliminar el producto incluyendo el token en los encabezados
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->delete("http://localhost:8000/api/providers/$id");
+        ])->delete(('API_BASE_URL'). '/providers'.$id);
 
         if ($response->successful()) {
             // Devolver una respuesta adecuada
@@ -86,7 +86,7 @@ public function edit($id)
             $token = Session::get('auth_token');
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->get("http://localhost:8000/api/providers/$id");
+            ])->get(('API_BASE_URL'). '/providers'.$id);
 
             if ($response->successful()) {
                 $provider = $response->json();
@@ -106,7 +106,7 @@ public function edit($id)
             $requestData = $request->all();
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->put("http://localhost:8000/api/providers/$id", $requestData);
+            ])->put(('API_BASE_URL'). '/providers'.$id, $requestData);
 
             if ($response->successful()) {
                 return redirect('/proveedores')->with('success', 'El proveedor ha sido actualizado correctamente.');
