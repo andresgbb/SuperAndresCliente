@@ -17,7 +17,7 @@ class AuthController extends Controller
 
         try {
             // Realiza una solicitud POST a la ruta de login de tu API
-            $response = Http::post('http://localhost:8000/api/login', [
+            $response = Http::post(env('API_BASE_URL'), [
                 'email' => $request->email,
                 'password' => $request->password,
             ]);
