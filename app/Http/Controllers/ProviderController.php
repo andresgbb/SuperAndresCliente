@@ -16,7 +16,7 @@ class ProviderController extends Controller
             // Realizar la solicitud GET a la API de productos incluyendo el token en los encabezados
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->get('http://localhost:8000/api/providers');
+            ])->get(env('API_BASE_URL'));
 
             if ($response->successful()) {
                 // Decodificar los datos JSON de la respuesta
@@ -45,7 +45,7 @@ class ProviderController extends Controller
             // Realizar la solicitud POST a la API de productos incluyendo el token en los encabezados y los datos del nuevo producto
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->post('http://localhost:8000/api/providers', $requestData);
+            ])->post(env('API_BASE_URL'), $requestData);
 
             if ($response->successful()) {
                 return redirect('/proveedores');
