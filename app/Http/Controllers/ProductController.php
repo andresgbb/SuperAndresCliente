@@ -66,7 +66,7 @@ public function destroy($id){
         // Realizar la solicitud DELETE a la API para eliminar el producto incluyendo el token en los encabezados
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->delete(env('API_BASE_URL'). '/' . $id);
+        ])->delete(env('API_BASE_URL'). '/products'.'/' . $id);
 
         if ($response->successful()) {
             return redirect('/productos');
@@ -90,7 +90,7 @@ public function update(Request $request, $id){
         // Realizar la solicitud PUT a la API para actualizar el producto incluyendo el token en los encabezados
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->put(env('API_BASE_URL'). '/'.$id, $requestData);
+        ])->put(env('API_BASE_URL'). '/products'.'/'.$id, $requestData);
 
         if ($response->successful()) {
             // Devolver una respuesta adecuada
@@ -113,7 +113,7 @@ public function edit($id)
         // Obtener el producto por su ID desde la API
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->get(env('API_BASE_URL').'/' . $id);
+        ])->get(env('API_BASE_URL').'/products'.'/' . $id);
 
         if ($response->successful()) {
             // Decodificar los datos JSON de la respuesta

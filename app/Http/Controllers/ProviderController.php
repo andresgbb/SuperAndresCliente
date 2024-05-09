@@ -66,7 +66,7 @@ class ProviderController extends Controller
         // Realizar la solicitud DELETE a la API para eliminar el producto incluyendo el token en los encabezados
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->delete(('API_BASE_URL'). '/providers'.$id);
+        ])->delete(('API_BASE_URL'). '/providers'.'/'.$id);
 
         if ($response->successful()) {
             // Devolver una respuesta adecuada
@@ -86,7 +86,7 @@ public function edit($id)
             $token = Session::get('auth_token');
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->get(('API_BASE_URL'). '/providers'.$id);
+            ])->get(('API_BASE_URL'). '/providers'.'/'.$id);
 
             if ($response->successful()) {
                 $provider = $response->json();
@@ -106,7 +106,7 @@ public function edit($id)
             $requestData = $request->all();
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->put(('API_BASE_URL'). '/providers'.$id, $requestData);
+            ])->put(('API_BASE_URL'). '/providers'.'/'.$id, $requestData);
 
             if ($response->successful()) {
                 return redirect('/proveedores')->with('success', 'El proveedor ha sido actualizado correctamente.');
