@@ -32,7 +32,7 @@ class RegisterController extends Controller
         }
 
         // Devuelve la respuesta al cliente en caso de error
-        return response()->json($data, $response->status());
+        return redirect('register');
     } catch (\Exception $e) {
         // Maneja errores
         return response()->json(['message' => 'Error al realizar la solicitud: ' . $e->getMessage()], 500);

@@ -36,13 +36,15 @@ body {
 
 /* Estilos específicos para los formularios de registro e inicio de sesión */
 .register-form input,
-.login-form input,
-.register-form a {
+.login-form input{
     width: calc(100% - 24px); /* Resta el doble del padding (12px a cada lado) */
     margin: 0 auto 15px auto; /* Margen superior e inferior de 15px y centrado horizontal */
     padding: 12px; /* Padding de 12px en todas las direcciones */
     border: 1px solid #ccc; /* Borde del input */
     border-radius: 6px;
+}
+.register-form a{
+    text-decoration: none;
 }
 .register-form button,
 .login-form button{
@@ -64,4 +66,8 @@ body {
 .register-form button:hover,
 .login-form button:hover {
     background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+.cuenta{
+    border: 0px ;
+    text-align: center;
 }
