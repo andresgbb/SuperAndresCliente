@@ -20,7 +20,7 @@
                 <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
                 <button type="submit">Registrarse</button>
-                <div class="cuenta">
+                <div>
                     <a href="/login">ya tengo cuenta</a>
                 </div>
 
