@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -18,14 +19,21 @@ class RegisterController extends Controller
     ]);
 
     try {
-        // Realiza una solicitud POST a la ruta de registro de tu API
+        // Verifica si el correo electrónico ya está en la base de datos
+        $existingUser = User::where('email', $request->email)->first();
+
+        if ($existingUser) {
+            // Si el usuario ya existe, redirige al usuario de vuelta al formulario de registro con un mensaje de error
+            return redirect('register')->withErrors(['email' => 'El correo electrónico ya está registrado.'])->withInput();
+        }
+
+
+        // Si el correo electrónico no está registrado, realiza una solicitud POST a la ruta de registro de tu API
         $response = Http::post(env('API_BASE_URL').'/register', [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
         ]);
-
-        $data = $response->json();
 
         if ($response->successful()) {
             return redirect('login');
